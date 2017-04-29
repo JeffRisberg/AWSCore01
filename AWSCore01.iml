@@ -16,7 +16,6 @@
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-support:1.11.37" level="project" />
-    <orderEntry type="library" name="Maven: com.amazonaws:jmespath-java:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-simpledb:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-servicecatalog:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-simpleworkflow:1.11.37" level="project" />
@@ -27,7 +26,6 @@
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-sts:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-sqs:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-rds:1.11.37" level="project" />
-    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-redshift:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-elasticbeanstalk:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-glacier:1.11.37" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-iam:1.11.37" level="project" />
@@ -105,5 +103,7 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-joda:2.8.3" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.7" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.8.3" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-redshift:1.11.123" level="project" />
+    <orderEntry type="library" name="Maven: com.amazonaws:jmespath-java:1.11.123" level="project" />
   </component>
 </module>
