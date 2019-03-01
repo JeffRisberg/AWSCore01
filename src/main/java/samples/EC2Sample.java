@@ -15,8 +15,7 @@ import java.io.IOException;
  * EC2 Management
  * <p>
  * <b>Important:</b> Be sure to fill in your AWS access credentials in
- * ~/.aws/credentials (C:\Users\USER_NAME\.aws\credentials for Windows
- * users) before you try to run this sample.
+ * ~/.aws/credentials before you try to run this sample.
  */
 public class EC2Sample {
 
