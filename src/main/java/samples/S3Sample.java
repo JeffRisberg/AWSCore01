@@ -30,8 +30,8 @@ public class S3Sample {
          * aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
          */
 
-        String region = "us-west-2";
-        AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+        final String region = "us-west-2";
+        final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
                 .withCredentials(new ProfileCredentialsProvider("default"))
                 .withRegion(region)
                 .build();

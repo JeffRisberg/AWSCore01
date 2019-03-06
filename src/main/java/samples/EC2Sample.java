@@ -30,16 +30,17 @@ public class EC2Sample {
          * aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
          */
 
-        String region = "us-west-2";
+        final String region = "us-west-2";
         final AmazonEC2 ec2 = AmazonEC2ClientBuilder.standard()
                 .withCredentials(new ProfileCredentialsProvider("default"))
                 .withRegion(region)
                 .build();
-        boolean done = false;
 
         System.out.println("===========================================");
         System.out.println("Getting Started with Amazon EC2");
         System.out.println("===========================================\n");
+
+        boolean done = false;
 
         try {
             DescribeInstancesRequest request = new DescribeInstancesRequest();
