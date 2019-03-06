@@ -2,6 +2,7 @@ package samples;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 import com.amazonaws.services.ec2.model.DescribeInstancesRequest;
@@ -20,7 +21,6 @@ import java.io.IOException;
 public class EC2Sample {
 
     public static void main(String[] args) throws IOException {
-
         /*
          * Create your credentials file at ~/.aws/credentials (C:\Users\USER_NAME\.aws\credentials for Windows users)
          * and save the following lines after replacing the underlined values with your own.
@@ -29,7 +29,12 @@ public class EC2Sample {
          * aws_access_key_id = YOUR_ACCESS_KEY_ID
          * aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
          */
-        final AmazonEC2 ec2 = AmazonEC2ClientBuilder.defaultClient();
+
+        String region = "us-west-2";
+        final AmazonEC2 ec2 = AmazonEC2ClientBuilder.standard()
+                .withCredentials(new ProfileCredentialsProvider("default"))
+                .withRegion(region)
+                .build();
         boolean done = false;
 
         System.out.println("===========================================");
