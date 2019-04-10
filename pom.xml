@@ -10,10 +10,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <archaius.version>0.7.6</archaius.version>
-        <aws.version>1.11.515</aws.version>
-        <guice.version>4.0</guice.version>
+        <aws.version>1.11.529</aws.version>
+        <guice.version>4.2.2</guice.version>
         <jackson.version>2.9.8</jackson.version>
     </properties>
 
