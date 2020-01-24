@@ -54,12 +54,14 @@ public class EC2Sample {
                 "AMI %s, " +
                 "type %s, " +
                 "state %s " +
-                "and monitoring state %s",
+                "and monitoring state %s\n",
               instance.getInstanceId(),
               instance.getImageId(),
               instance.getInstanceType(),
               instance.getState().getName(),
               instance.getMonitoring().getState());
+
+            System.out.println(instance.getKeyName());
           }
         }
 
