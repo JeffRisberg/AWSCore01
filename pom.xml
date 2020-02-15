@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <archaius.version>0.7.6</archaius.version>
-        <aws.version>1.11.714</aws.version>
+        <aws.version>1.11.723</aws.version>
         <guice.version>4.2.2</guice.version>
         <jackson.version>2.10.2</jackson.version>
     </properties>
@@ -28,7 +28,7 @@
             <artifactId>aws-java-sdk</artifactId>
             <version>${aws.version}</version>
         </dependency>
-        <dependency>
+      <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>${guice.version}</version>
