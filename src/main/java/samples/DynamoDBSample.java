@@ -6,17 +6,14 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.model.ListTablesRequest;
 import com.amazonaws.services.dynamodbv2.model.ListTablesResult;
-
 import java.io.IOException;
 import java.util.List;
 
 /**
- * This sample demonstrates how to make basic requests to Amazon DyanamoDB using
- * the SDK for Java.
- * <p>
- * <b>Important:</b> Be sure to fill in your AWS access credentials in
- * ~/.aws/credentials (C:\Users\USER_NAME\.aws\credentials for Windows
- * users) before you try to run this sample.
+ * This sample demonstrates how to make basic requests to Amazon DyanamoDB using the SDK for Java.
+ *
+ * <p><b>Important:</b> Be sure to fill in your AWS access credentials in ~/.aws/credentials
+ * (C:\Users\USER_NAME\.aws\credentials for Windows users) before you try to run this sample.
  */
 public class DynamoDBSample {
 
@@ -31,10 +28,11 @@ public class DynamoDBSample {
      */
 
     final String region = "us-west-2";
-    final AmazonDynamoDB ddb = AmazonDynamoDBClientBuilder.standard()
-      .withCredentials(new ProfileCredentialsProvider("default"))
-      .withRegion(region)
-      .build();
+    final AmazonDynamoDB ddb =
+        AmazonDynamoDBClientBuilder.standard()
+            .withCredentials(new ProfileCredentialsProvider("default"))
+            .withRegion(region)
+            .build();
 
     System.out.println("Your DynamoDB tables:\n");
 
@@ -48,9 +46,7 @@ public class DynamoDBSample {
         if (last_name == null) {
           request = new ListTablesRequest().withLimit(10);
         } else {
-          request = new ListTablesRequest()
-            .withLimit(10)
-            .withExclusiveStartTableName(last_name);
+          request = new ListTablesRequest().withLimit(10).withExclusiveStartTableName(last_name);
         }
 
         ListTablesResult table_list = ddb.listTables(request);
