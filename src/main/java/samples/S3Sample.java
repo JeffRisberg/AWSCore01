@@ -6,17 +6,14 @@ import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
-
 import java.io.*;
 import java.util.UUID;
 
 /**
- * This sample demonstrates how to make basic requests to Amazon S3 using
- * the AWS SDK for Java.
- * <p>
- * <b>Important:</b> Be sure to fill in your AWS access credentials in
- * ~/.aws/credentials (C:\Users\USER_NAME\.aws\credentials for Windows
- * users) before you try to run this sample.
+ * This sample demonstrates how to make basic requests to Amazon S3 using the AWS SDK for Java.
+ *
+ * <p><b>Important:</b> Be sure to fill in your AWS access credentials in ~/.aws/credentials
+ * (C:\Users\USER_NAME\.aws\credentials for Windows users) before you try to run this sample.
  */
 public class S3Sample {
 
@@ -31,10 +28,11 @@ public class S3Sample {
      */
 
     final String region = "us-west-2";
-    final AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-      .withCredentials(new ProfileCredentialsProvider("default"))
-      .withRegion(region)
-      .build();
+    final AmazonS3 s3 =
+        AmazonS3ClientBuilder.standard()
+            .withCredentials(new ProfileCredentialsProvider("default"))
+            .withRegion(region)
+            .build();
 
     String bucketName = "my-first-s3-bucket-" + UUID.randomUUID();
     String key = "MyObjectKey";
@@ -101,12 +99,11 @@ public class S3Sample {
        * additional results.
        */
       System.out.println("Listing objects");
-      ObjectListing objectListing = s3.listObjects(new ListObjectsRequest()
-        .withBucketName(bucketName)
-        .withPrefix("My"));
+      ObjectListing objectListing =
+          s3.listObjects(new ListObjectsRequest().withBucketName(bucketName).withPrefix("My"));
       for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
-        System.out.println(" - " + objectSummary.getKey() + "  " +
-          "(size = " + objectSummary.getSize() + ")");
+        System.out.println(
+            " - " + objectSummary.getKey() + "  " + "(size = " + objectSummary.getSize() + ")");
       }
       System.out.println();
 
@@ -125,24 +122,25 @@ public class S3Sample {
       System.out.println("Deleting bucket " + bucketName + "\n");
       s3.deleteBucket(bucketName);
     } catch (AmazonServiceException ase) {
-      System.out.println("Caught an AmazonServiceException, which means your request made it "
-        + "to Amazon S3, but was rejected with an error response for some reason.");
+      System.out.println(
+          "Caught an AmazonServiceException, which means your request made it "
+              + "to Amazon S3, but was rejected with an error response for some reason.");
       System.out.println("Error Message:    " + ase.getMessage());
       System.out.println("HTTP Status Code: " + ase.getStatusCode());
       System.out.println("AWS Error Code:   " + ase.getErrorCode());
       System.out.println("Error Type:       " + ase.getErrorType());
       System.out.println("Request ID:       " + ase.getRequestId());
     } catch (AmazonClientException ace) {
-      System.out.println("Caught an AmazonClientException, which means the client encountered "
-        + "a serious internal problem while trying to communicate with S3, "
-        + "such as not being able to access the network.");
+      System.out.println(
+          "Caught an AmazonClientException, which means the client encountered "
+              + "a serious internal problem while trying to communicate with S3, "
+              + "such as not being able to access the network.");
       System.out.println("Error Message: " + ace.getMessage());
     }
   }
 
   /**
-   * Creates a temporary file with text data to demonstrate uploading a file
-   * to Amazon S3
+   * Creates a temporary file with text data to demonstrate uploading a file to Amazon S3
    *
    * @return A newly created temporary file with text data.
    * @throws IOException
@@ -178,5 +176,4 @@ public class S3Sample {
     }
     System.out.println();
   }
-
 }
