@@ -14,7 +14,7 @@
     <archaius.version>0.7.6</archaius.version>
     <aws.version>1.11.858</aws.version>
     <guice.version>4.2.3</guice.version>
-    <jackson.version>2.10.4</jackson.version>
+    <jackson.version>2.11.2</jackson.version>
   </properties>
 
   <dependencies>
