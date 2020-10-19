@@ -2,7 +2,13 @@ package samples;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.auth.AWSCredentialsProvider;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.comprehend.AmazonComprehend;
+import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
+import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
+import com.amazonaws.services.comprehend.model.DetectSentimentResult;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
@@ -43,7 +49,7 @@ public class ComprehendExample {
       AmazonComprehend comprehendClient =
           AmazonComprehendClientBuilder.standard()
               .withCredentials(awsCreds)
-              .withRegion("region")
+              .withRegion("us-west-2")
               .build();
 
       // Call detectSentiment API
@@ -66,7 +72,7 @@ public class ComprehendExample {
     } catch (AmazonClientException ace) {
       System.out.println(
           "Caught an AmazonClientException, which means the client encountered "
-              + "a serious internal problem while trying to communicate with S3, "
+              + "a serious internal problem while trying to communicate with Amazon Comprehend, "
               + "such as not being able to access the network.");
       System.out.println("Error Message: " + ace.getMessage());
     }
