@@ -4,19 +4,16 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.comprehend.AmazonComprehend;
 import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
 import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
 import com.amazonaws.services.comprehend.model.DetectSentimentResult;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.*;
-import java.io.*;
-import java.util.UUID;
+
+import java.io.IOException;
 
 /**
- * This sample demonstrates how to make basic requests to Amazon Comprehend using the AWS SDK for Java.
+ * This sample demonstrates how to make basic requests to Amazon Comprehend using the AWS SDK for
+ * Java.
  *
  * <p><b>Important:</b> Be sure to fill in your AWS access credentials in ~/.aws/credentials
  * (C:\Users\USER_NAME\.aws\credentials for Windows users) before you try to run this sample.
@@ -34,7 +31,8 @@ public class ComprehendExample {
      */
 
     final String region = "us-west-2";
-    String text = "It is raining today in Seattle";
+    String text1 = "It is raining today in Seattle";
+    String text2 = "really good";
 
     // Create credentials using a provider chain. For more information, see
     // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
@@ -45,7 +43,6 @@ public class ComprehendExample {
     System.out.println("===========================================\n");
 
     try {
-
       AmazonComprehend comprehendClient =
           AmazonComprehendClientBuilder.standard()
               .withCredentials(awsCreds)
@@ -54,12 +51,20 @@ public class ComprehendExample {
 
       // Call detectSentiment API
       System.out.println("Calling DetectSentiment");
-      DetectSentimentRequest detectSentimentRequest = new DetectSentimentRequest().withText(text)
-          .withLanguageCode("en");
-      DetectSentimentResult detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
-      System.out.println(detectSentimentResult);
+
+      DetectSentimentRequest detectSentimentRequest;
+      DetectSentimentResult detectSentimentResult;
+
+      detectSentimentRequest = new DetectSentimentRequest().withText(text1).withLanguageCode("en");
+      detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+      printDetectedSentiment(detectSentimentResult);
+
+      detectSentimentRequest = new DetectSentimentRequest().withText(text2).withLanguageCode("en");
+      detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+      printDetectedSentiment(detectSentimentResult);
+
       System.out.println("End of DetectSentiment\n");
-      System.out.println( "Done" );
+      System.out.println("Done");
     } catch (AmazonServiceException ase) {
       System.out.println(
           "Caught an AmazonServiceException, which means your request made it "
@@ -76,5 +81,9 @@ public class ComprehendExample {
               + "such as not being able to access the network.");
       System.out.println("Error Message: " + ace.getMessage());
     }
+  }
+
+  private static void printDetectedSentiment(DetectSentimentResult detectSentimentResult) {
+    System.out.println(detectSentimentResult);
   }
 }
