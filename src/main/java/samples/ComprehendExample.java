@@ -6,9 +6,7 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.comprehend.AmazonComprehend;
 import com.amazonaws.services.comprehend.AmazonComprehendClientBuilder;
-import com.amazonaws.services.comprehend.model.DetectSentimentRequest;
-import com.amazonaws.services.comprehend.model.DetectSentimentResult;
-
+import com.amazonaws.services.comprehend.model.*;
 import java.io.IOException;
 
 /**
@@ -32,7 +30,7 @@ public class ComprehendExample {
 
     final String region = "us-west-2";
     String text1 = "It is raining today in Seattle";
-    String text2 = "really good";
+    String text2 = "I'm having trouble with VPN on mac";
 
     // Create credentials using a provider chain. For more information, see
     // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
@@ -64,6 +62,23 @@ public class ComprehendExample {
       printDetectedSentiment(detectSentimentResult);
 
       System.out.println("End of DetectSentiment\n");
+
+      System.out.println("Calling DetectEntities");
+      DetectEntitiesRequest detectEntitiesRequest;
+      DetectEntitiesResult detectEntitiesResult;
+
+      System.out.println(text1);
+      detectEntitiesRequest = new DetectEntitiesRequest().withText(text1).withLanguageCode("en");
+      detectEntitiesResult = comprehendClient.detectEntities(detectEntitiesRequest);
+      detectEntitiesResult.getEntities().forEach(System.out::println);
+
+      System.out.println(text2);
+      detectEntitiesRequest = new DetectEntitiesRequest().withText(text2).withLanguageCode("en");
+      detectEntitiesResult = comprehendClient.detectEntities(detectEntitiesRequest);
+      detectEntitiesResult.getEntities().forEach(System.out::println);
+
+      System.out.println("End of DetectEntities");
+
       System.out.println("Done");
     } catch (AmazonServiceException ase) {
       System.out.println(
