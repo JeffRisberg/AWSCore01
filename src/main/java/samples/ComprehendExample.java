@@ -53,10 +53,12 @@ public class ComprehendExample {
       DetectSentimentRequest detectSentimentRequest;
       DetectSentimentResult detectSentimentResult;
 
+      System.out.println(text1);
       detectSentimentRequest = new DetectSentimentRequest().withText(text1).withLanguageCode("en");
       detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
       printDetectedSentiment(detectSentimentResult);
 
+      System.out.println(text2);
       detectSentimentRequest = new DetectSentimentRequest().withText(text2).withLanguageCode("en");
       detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
       printDetectedSentiment(detectSentimentResult);
