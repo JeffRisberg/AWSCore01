@@ -12,9 +12,6 @@ import java.io.IOException;
 /**
  * This sample demonstrates how to make basic requests to Amazon Comprehend using the AWS SDK for
  * Java.
- *
- * <p><b>Important:</b> Be sure to fill in your AWS access credentials in ~/.aws/credentials
- * (C:\Users\USER_NAME\.aws\credentials for Windows users) before you try to run this sample.
  */
 public class ComprehendExample {
 
@@ -47,7 +44,7 @@ public class ComprehendExample {
               .withRegion("us-west-2")
               .build();
 
-      // Call detectSentiment API
+      // Call DetectSentiment API
       System.out.println("Calling DetectSentiment");
 
       DetectSentimentRequest detectSentimentRequest;
@@ -65,6 +62,7 @@ public class ComprehendExample {
 
       System.out.println("End of DetectSentiment\n");
 
+      // Call DetectEntities API
       System.out.println("Calling DetectEntities");
       DetectEntitiesRequest detectEntitiesRequest;
       DetectEntitiesResult detectEntitiesResult;
@@ -80,6 +78,23 @@ public class ComprehendExample {
       detectEntitiesResult.getEntities().forEach(System.out::println);
 
       System.out.println("End of DetectEntities");
+
+      // Call DetectKeyPhrases API
+      System.out.println("Calling DetectKeyPhrases");
+      DetectKeyPhrasesRequest detectKeyPhrasesRequest;
+      DetectKeyPhrasesResult detectKeyPhrasesResult;
+
+      System.out.println(text1);
+      detectKeyPhrasesRequest = new DetectKeyPhrasesRequest().withText(text1).withLanguageCode("en");
+      detectKeyPhrasesResult = comprehendClient.detectKeyPhrases(detectKeyPhrasesRequest);
+      detectKeyPhrasesResult.getKeyPhrases().forEach(System.out::println);
+
+      System.out.println(text2);
+      detectKeyPhrasesRequest = new DetectKeyPhrasesRequest().withText(text2).withLanguageCode("en");
+      detectKeyPhrasesResult = comprehendClient.detectKeyPhrases(detectKeyPhrasesRequest);
+      detectKeyPhrasesResult.getKeyPhrases().forEach(System.out::println);
+
+      System.out.println("End of DetectKeyPhrases");
 
       System.out.println("Done");
     } catch (AmazonServiceException ase) {
