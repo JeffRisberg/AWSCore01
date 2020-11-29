@@ -28,6 +28,7 @@ public class ComprehendExample {
     final String region = "us-west-2";
     String text1 = "It is raining today in Seattle";
     String text2 = "I'm having trouble with VPN on mac";
+    String text3 = "I need to reset my password";
 
     // Create credentials using a provider chain. For more information, see
     // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
@@ -60,6 +61,11 @@ public class ComprehendExample {
       detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
       printDetectedSentiment(detectSentimentResult);
 
+      System.out.println(text3);
+      detectSentimentRequest = new DetectSentimentRequest().withText(text3).withLanguageCode("en");
+      detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+      printDetectedSentiment(detectSentimentResult);
+
       System.out.println("End of DetectSentiment\n");
 
       // Call DetectEntities API
@@ -74,6 +80,11 @@ public class ComprehendExample {
 
       System.out.println(text2);
       detectEntitiesRequest = new DetectEntitiesRequest().withText(text2).withLanguageCode("en");
+      detectEntitiesResult = comprehendClient.detectEntities(detectEntitiesRequest);
+      detectEntitiesResult.getEntities().forEach(System.out::println);
+
+      System.out.println(text3);
+      detectEntitiesRequest = new DetectEntitiesRequest().withText(text3).withLanguageCode("en");
       detectEntitiesResult = comprehendClient.detectEntities(detectEntitiesRequest);
       detectEntitiesResult.getEntities().forEach(System.out::println);
 
