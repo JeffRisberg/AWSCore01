@@ -28,7 +28,7 @@ public class ComprehendExample {
     final String region = "us-west-2";
     String text1 = "It is raining today in Seattle";
     String text2 = "I'm having trouble with VPN on mac";
-    String text3 = "I need to reset my password";
+    String text3 = "I need to reset my vpn password";
 
     // Create credentials using a provider chain. For more information, see
     // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
