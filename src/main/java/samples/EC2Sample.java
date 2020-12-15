@@ -27,9 +27,10 @@ public class EC2Sample {
      */
 
     final String region = "us-west-2";
+    ProfileCredentialsProvider x = new ProfileCredentialsProvider("default");
     final AmazonEC2 ec2 =
         AmazonEC2ClientBuilder.standard()
-            .withCredentials(new ProfileCredentialsProvider("default"))
+            .withCredentials(x)
             .withRegion(region)
             .build();
 
