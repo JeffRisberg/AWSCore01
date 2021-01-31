@@ -29,6 +29,7 @@ public class ComprehendExample {
     String text1 = "It is raining today in Seattle";
     String text2 = "I'm having trouble with VPN on mac";
     String text3 = "I need to reset my vpn password";
+    String text4 = "the visuals were award-winning";
 
     // Create credentials using a provider chain. For more information, see
     // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
@@ -63,6 +64,11 @@ public class ComprehendExample {
 
       System.out.println(text3);
       detectSentimentRequest = new DetectSentimentRequest().withText(text3).withLanguageCode("en");
+      detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
+      printDetectedSentiment(detectSentimentResult);
+
+      System.out.println(text4);
+      detectSentimentRequest = new DetectSentimentRequest().withText(text4).withLanguageCode("en");
       detectSentimentResult = comprehendClient.detectSentiment(detectSentimentRequest);
       printDetectedSentiment(detectSentimentResult);
 
