@@ -111,6 +111,11 @@ public class ComprehendExample {
       detectKeyPhrasesResult = comprehendClient.detectKeyPhrases(detectKeyPhrasesRequest);
       detectKeyPhrasesResult.getKeyPhrases().forEach(System.out::println);
 
+      System.out.println(text3);
+      detectKeyPhrasesRequest = new DetectKeyPhrasesRequest().withText(text3).withLanguageCode("en");
+      detectKeyPhrasesResult = comprehendClient.detectKeyPhrases(detectKeyPhrasesRequest);
+      detectKeyPhrasesResult.getKeyPhrases().forEach(System.out::println);
+
       System.out.println("End of DetectKeyPhrases");
 
       System.out.println("Done");
